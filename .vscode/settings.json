@@ -1,0 +1,88 @@
+{
+  "workbench.colorCustomizations": {
+    "editor.background": "#2a1d0f",
+    "editor.lineHighlightBackground": "#321c0f",
+    "titleBar.activeBackground": "#b18200d8",
+    "activityBar.background": "#b47a27",
+    "menu.background": "#b47a27",
+    "button.background": "#b47a27",
+    "button.foreground": "#ffffff",
+    "list.activeSelectionBackground": "#b47a27",
+    "editor.foldBackground": "#48502220",
+    "editorBracketHighlight.foreground1": "#aa9000",
+    "editorBracketHighlight.foreground2": "#bb8020",
+    "editorBracketHighlight.foreground3": "#cc7030",
+    "editorBracketHighlight.foreground4": "#dd6040",
+    "editorBracketHighlight.foreground5": "#ee5050",
+    "editorBracketHighlight.foreground6": "#f83860",
+    "editorBracketHighlight.foreground7": "#f83068",
+    "editorBracketHighlight.foreground8": "#ff2070",
+    "editorInlayHint.background": "#8b6e4680",
+    "editorInlayHint.foreground": "#ffffff80",
+    "editorInlayHint.parameterBackground": "#468b6e40",
+    "editorInlayHint.parameterForeground": "#80ff8080",
+    "editorInlayHint.typeBackground": "#8b6e4640",
+    "editorInlayHint.typeForeground": "#ffcc8080"
+  },
+  "tabsColor.byFileType": {
+    "less": {
+      "backgroundColor": "#003366",
+      "fontColor": "#ddeeff"
+    },
+    "sol": {
+      "backgroundColor": "#bb0000",
+      "fontColor": "#ffcccc"
+    }
+  },
+  "tabsColor.byDirectory": {
+    "datassdarkred": {
+      "backgroundColor": "#004422",
+      "fontColor": "#eeffee"
+    },
+    "components": {
+      "backgroundColor": "#801000",
+      "fontColor": "#ffddaa"
+    },
+    "xenomorphs": {
+      "backgroundColor": "#800040",
+      "fontColor": "#ffcc88"
+    },
+    "model": {
+      "backgroundColor": "#002288",
+      "fontColor": "#88eeff"
+    },
+    "react": {
+      "backgroundColor": "#220088",
+      "fontColor": "#ccddff"
+    },
+    "common/": {
+      "backgroundColor": "#555555",
+      "fontColor": "#eeeeee"
+    },
+    "onboarding": {
+      "backgroundColor": "#206020",
+      "fontColor": "#bbffbb"
+    },
+    "report": {
+      "backgroundColor": "#502020",
+      "fontColor": "#ffbbbb"
+    },
+    "types": {
+      "backgroundColor": "#204030",
+      "fontColor": "#bbeedd"
+    },
+    "onbApp": {
+      "backgroundColor": "#407040",
+      "fontColor": "#eeee88"
+    },
+    ".less": {
+      "backgroundColor": "#003366",
+      "fontColor": "#ddeeff"
+    },
+    "archive": {
+      "backgroundColor": "#ff8888",
+      "fontColor": "#000088"
+    },
+  },
+  "terminal.integrated.cwd": "/srv/ps/beefx-tint"
+}
