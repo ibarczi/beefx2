@@ -1,7 +1,7 @@
 import {Corelib, BeeFX, onWaapiReady} from '../beeproxy.js'
 
 const {nop} = Corelib
-const {startEndThrottle} = Corelib.Tardis
+const {startEndThrottle, adelay} = Corelib.Tardis
 const {min, max, round, SQRT2} = Math
 
 onWaapiReady.then(waCtx => {

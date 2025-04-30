@@ -1,9 +1,4 @@
-/* eslint-disables no-debugger, spaced-comment, no-multi-spaces, valid-typeof, 
-   object-curly-spacing, no-trailing-spaces, indent, new-cap, block-spacing, comma-spacing,
-   handle-callback-err, no-return-assign, camelcase, yoda, object-property-newline,
-   no-void, quotes, no-floating-decimal, import/first, space-unary-ops, 
-   standard/no-callback-literal, object-curly-newline */
-/* eslint-disable no-multi-spaces */
+// Beefx is a singleton by design: Web Audio and rendering share a single context.
 
 import {Corelib, createBeeDebug, beeCommon} from './beeproxy.js'
 

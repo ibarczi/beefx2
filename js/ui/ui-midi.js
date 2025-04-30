@@ -1,10 +1,9 @@
- 
 import {DOMplusUltra, Midi} from '../improxy.js'
 
 const {set$} = DOMplusUltra
   /*
   This is a very rudimental and limited Midi interface (for testing).
-  If the mouse is over an fx panel, the sliders can be set by theMIDI controller.
+  If the mouse is over an fx panel, the sliders can be set by the MIDI controller.
   (In this case there is a mark on the sliders displaying the mapping.)
   Currently it only supports the the AKAI MIDI MIX.
   */
@@ -33,7 +32,7 @@ export const createTestMidi = ui => {
     }
   }
   
-  Midi.createInterface(onMidi).init().then(_ => midi.isReady = true)
+  Midi.createInterface(onMidi).init().then(() => midi.isReady = true)
   
   const activateFpo = fpo => {
     if (!midi.isReady) {
@@ -84,6 +83,7 @@ export const createTestMidi = ui => {
       }
       //console.table(midi.midiMap)
     } else {
+      //
     }
     midi.activeFpo = fpo
   }

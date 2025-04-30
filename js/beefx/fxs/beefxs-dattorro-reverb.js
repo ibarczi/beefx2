@@ -1,9 +1,3 @@
-/* eslint-disable no-debugger, spaced-comment, no-multi-spaces, valid-typeof, 
-   object-curly-spacing, no-trailing-spaces, indent, new-cap, block-spacing, comma-spacing,
-   handle-callback-err, no-return-assign, camelcase, yoda, object-property-newline,
-   no-void, quotes, no-floating-decimal, import/first, space-unary-ops, 
-   standard/no-callback-literal, object-curly-newline */
-   
 import {BeeFX, onWaapiReady} from '../beeproxy.js'
 
 const {AudioWorkletNode} = window
@@ -42,7 +36,7 @@ onWaapiReady.then(async waCtx => {
     [4, 'ether']
   ]
   
-  const auWorkletPromise = waCtx.audioWorklet.addModule(getJsPath('beefx/fxs/dattorroReverb.js'))
+  const auWorkletPromise = waCtx.audioWorklet.addModule(getJsPath('beefx/fxs/dattorroReverbWorker.js'))
   auWorkletPromise
     .then(_ => console.log(`Dattoro's reverb audioWorklet loaded.`))
     .catch(err => console.error(`Dattoro's reverb audioWorklet failed to load.`, err))

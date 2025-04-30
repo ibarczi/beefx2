@@ -22,7 +22,7 @@ module.exports = {
     // "@typescript-eslint"
   ],
   "rules": {
-    "semi": "off",
+    "semi": "warn",
     "indent": "off",
     "quotes": "off",
     "quote-props": "off",
@@ -31,7 +31,7 @@ module.exports = {
     "comma-dangle": "off",
     "eol-last": "off",
     "spaced-comment": "off",
-    "nu-multi-spaces": "off",
+    "no-multi-spaces": "off",
     "multiline-ternary": "off",
     "dot-notation": "off",
     "valid-typeof": "off",

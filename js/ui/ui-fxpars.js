@@ -1,5 +1,3 @@
-/* eslint-disable no-multi-spaces */
-   
 import {Corelib, DOMplusUltra, createGraphBase} from '../improxy.js'
 
 const {Ø, isNum, isFun, clamp} = Corelib
@@ -15,7 +13,7 @@ export const createFxParControls = ui => {
   const graphBase = createGraphBase(ui.root.waCtx)
   const CANVAS_SIZE = 300
     
-  //8#79c Utilities, primitives, config
+  //#79c  Utilities, primitives, config
   
   const addPiano = (parO, callback, val, {keepDown = true}) => {
     const onClick = note => event => callback(note)
@@ -57,7 +55,7 @@ export const createFxParControls = ui => {
     
   const addCmd = (parO, name, callback, cc) => 
     parO.control$ = div$({class: 'bee-cmd ' + cc, text: name, click: _ => callback('fire')})
-                     
+
   const addCmdWithLed = (parO, name, callback, color = 0, cc = '') => 
     parO.control$ = div$({class: 'bee-cmd wled ' + cc, text: name, click: _ => callback('fire')},
       div$({class: 'led-fx fix-on', css: {__ledhue: color}}))
@@ -76,7 +74,7 @@ export const createFxParControls = ui => {
           ? num.toFixed(maxwi - 1) : num.toFixed(maxwi - 1)
   }
 
-  //8#a2aRendering graphs
+  //#a2a  Rendering graphs
   
   const renderPanelGraphs = (fxPanelObj, triggerKey, delay = 20) => schedule(delay).then(_ => {
     for (const graphName in fxPanelObj.panel.graphs) {
@@ -115,7 +113,7 @@ export const createFxParControls = ui => {
     clog(`📈Graph added for ${fx.zholger} with ${graphArr.length} items.`, timer.summary())
   }
   
-  //8#2aaRendering pars
+  //#2aa  Rendering pars
   
   const dbg = {
     mismatchCnt: 0
@@ -131,10 +129,10 @@ export const createFxParControls = ui => {
     const parO = pars[key]
     const {parDef} = parO
     const {type, subType} = parDef
-    const dispVal = fx.getValue(key) //: minmaxnak is lehet dispvalja
+    const dispVal = fx.getValue(key) //: minmaxnak can have dispval too
     
     const updaters = {
-      float: _ => {
+      float: () => {
         const isInt = subType === 'int'
         const {prec = 4} = parDef
         const {val} = fx.getLinearValues(key)
@@ -144,17 +142,17 @@ export const createFxParControls = ui => {
         clog('refreshDisplay', {key, dispVal, type: typeof dispVal})
         set$(parO.control$, {attr: {val: num2str(dispVal, isInt ? 0 : prec)}})
       },
-      piano: _ => {
+      piano: () => {
         for (const key$ of parO.keys$$) {
           setClass$(key$, key$.getAttribute('note') === dispVal, 'act') 
         }
       },
-      boolean: _ => {
+      boolean: () => {
         const checked = ''
         set$(parO.input$, dispVal ? {attr: {checked}} : {deattr: {checked}})//:no val at creating
         parO.input$.checked = dispVal
       },
-      box: _ => {
+      box: () => {
         const [text, longState = '', led = ''] = dispVal.split?.('#') ?? [dispVal]
         const [state, ledstate] = longState.split('.')
         if (parDef.subType === 'led') {
@@ -171,20 +169,20 @@ export const createFxParControls = ui => {
           set$(parO.control$, {text, attr: {state}})
         }
       },
-      cmd: _ => {
+      cmd: () => {
         if (dispVal !== 'fire') {
           const [state, ledstate = ''] = dispVal.split('.')
           set$(parO.control$, {attr: {state, ledstate}})
         }
       },
-      strings: _ => { 
+      strings: () => { 
         for (const child$ of parO.input$.children) {
           child$.selected = child$.value === dispVal
         } 
       },
-      graph: _ => renderPanelGraphs(fxPanelObj, key, 0),
-      html: _ => set$(parO.control$, {html: dispVal}),
-      info: _ => set$(parO.control$, {html: dispVal})
+      graph: () => renderPanelGraphs(fxPanelObj, key, 0),
+      html: () => set$(parO.control$, {html: dispVal}),
+      info: () => set$(parO.control$, {html: dispVal})
     }
     const paramUpdater = updaters[type]
     paramUpdater
@@ -194,7 +192,7 @@ export const createFxParControls = ui => {
     renderPanelGraphs(fxPanelObj, key)
   } 
   
-  //8#9c0 Rebuilding the parameter-specific parts of the fx panel
+  //#9c0  Rebuilding the parameter-specific parts of the fx panel
 
   const createParsInPanel = (fxPanelObj) => {
     const {fx, pars, panel} = fxPanelObj
@@ -209,7 +207,7 @@ export const createFxParControls = ui => {
       }
       const parO = pars[key] = {type, parDef: def[key]}
       const constructors = {
-        float: _ => {   //8#88e ------- float --> input range -------
+        float: _ => {   //#88e ------- float --> input range -------
           const dispName = short
           const {val, min, max} = fx.getLinearValues(key)
           const step = subType === 'int' ? 1 : .001
@@ -220,30 +218,30 @@ export const createFxParControls = ui => {
         piano: _ => {
           addPiano(parO, onValChanged(key), 0, {keepDown: true})
         },
-        boolean: _ => { //8#9c7 ------- boolean --> input checkbox -------
+        boolean: _ => { //#9c7 ------- boolean --> input checkbox -------
           addCheckbox(parO, short, onValChanged(key))
         },
-        box: _ => {    //8#b8a7 ------- box --> non-input, output, plain div cmd -------
+        box: _ => {    //#b8a7 ------- box --> non-input, output, plain div cmd -------
           subType === 'led'
             ? addBoxWithLed(parO, (parO.parDef.width || 40) + 'px', cc)
             : addBox(parO, (parO.parDef.width || 40) + 'px', cc)
         },
-        cmd: _ => {    //8#b8c7 ------- cmd --> non-input, plain div cmd -------
+        cmd: _ => {    //#b8c7 ------- cmd --> non-input, plain div cmd -------
           subType === 'led'
             ? addCmdWithLed(parO, short, onValChanged(key), parO.parDef.color, cc)
             : addCmd(parO, short, onValChanged(key), cc)
         },
-        strings: _ => { //8#ea7 ------- strings --> select box -------
+        strings: _ => { //#ea7 ------- strings --> select box -------
           addListSelector(parO, short, '', subType, onValChanged(key))
           size && set$(parO.input$, {attr: {size}})
         },
-        graph: _ => {   //8#3ca ------- graph -> addscene -------
+        graph: _ => {   //#3ca ------- graph -> addscene -------
           addPanelGraph(fxPanelObj, key)
         },
-        html: _ => {    //8#7ae ------- html --> html -------
+        html: _ => {    //#7ae ------- html --> html -------
           parO.control$ = div$({class: 'html', html: fx.getValue(key)})  
         },
-        info: _ => {    //8#8be ------- info --> html -------
+        info: _ => {    //#8be ------- info --> html -------
           parO.control$ = div$({class: 'info', html: fx.getValue(key)})  
         }
       }

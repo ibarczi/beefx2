@@ -84,5 +84,11 @@
       "fontColor": "#000088"
     },
   },
-  "terminal.integrated.cwd": "/srv/ps/beefx-tint"
+  "terminal.integrated.cwd": "/srv/ps/beefx2",
+  "favorites.resources": [
+    {
+      "filePath": "js/beefx/fxs/dattorroReverb.js",
+      "group": "Default"
+    }
+  ]
 }

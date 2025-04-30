@@ -1,7 +1,3 @@
-/* beeslint-disable no-debugger, spaced-comment, object-curly-spacing, no-trailing-spaces,
-   indent, new-cap, block-spacing, comma-spacing, handle-callback-err, camelcase, yoda,
-   object-property-newline, object-curly-newline, no-void, quotes, no-unreachable */
-
 const konfig = {
   contentScripts: [
     'https://beefx-tint.mork.work/js/youtube/beefxt-main.js'

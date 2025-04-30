@@ -83,6 +83,9 @@ body::after {
   color: #fbb;
   content: attr(error);
 }
+body input.macilux {
+  background: transparent;
+}
 .clicker {
   position: fixed;
   left: 0;
@@ -1097,7 +1100,7 @@ audio::-webkit-media-controls-panel {
 }
 .beefxtint .bfx-mid {
   transform-origin: 50% 0;
-  transform: scale(2.5);
+  transform: scale(1.25);
 }
 .bfx-stage {
   position: relative;
